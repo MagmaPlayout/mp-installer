@@ -5,10 +5,7 @@ function writeMsg {
 		echo $1
 }
 
-echo ""
-echo " ------------------------------- "
-echo "Magma Playout - Module downloader"
-echo " ------------------------------- "
+writeMsg "Magma Playout - Module downloader"
 
 writeMsg "Creating dir structure..."
 mkdir core

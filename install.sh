@@ -1,4 +1,5 @@
 #!/bin/bash -e
+start=`date +%s`
 
 echo "  ---------------------  "
 echo " Magma Playout Installer "
@@ -21,6 +22,10 @@ cd magma-playout/
 ./03-buildJavaModules.sh
 cd -
 
+
+end=`date +%s`
+runtime=$((end-start))
 echo ""
-echo "Done."
+echo "Done in $runtime seconds"
+
 

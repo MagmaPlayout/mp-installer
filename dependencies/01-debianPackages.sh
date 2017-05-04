@@ -1,8 +1,6 @@
 #!/bin/bash -e
 
-echo "  ------------------------  "
-echo " Installing Debian packages "
-echo "  ------------------------  "
+echo "Installing Debian packages"
 echo ""
 
 echo "TODO: complete list"
