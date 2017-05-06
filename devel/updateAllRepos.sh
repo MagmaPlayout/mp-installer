@@ -4,7 +4,13 @@ function updateDir {
 
 figlet "GIT PULLING"
 
-cd ../magma-playout/
+echo ""
+echo "Installer"
+cd ../
+git pull
+
+
+cd magma-playout/
 
 echo ""
 echo "MPC Melted Backend"
