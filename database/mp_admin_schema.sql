@@ -8,19 +8,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema mp_admin_db
+-- Schema mp_admin
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mp_admin_db
+-- Schema mp_admin
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mp_admin_db` DEFAULT CHARACTER SET latin1 ;
-USE `mp_admin_db` ;
+CREATE SCHEMA IF NOT EXISTS `mp_admin` DEFAULT CHARACTER SET latin1 ;
+USE `mp_admin` ;
 
 -- -----------------------------------------------------
--- Table `mp_admin_db`.`Action`
+-- Table `mp_admin`.`Action`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mp_admin_db`.`Action` (
+CREATE TABLE IF NOT EXISTS `mp_admin`.`Action` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` VARCHAR(255) NULL DEFAULT NULL,
@@ -31,9 +31,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `mp_admin_db`.`Role`
+-- Table `mp_admin`.`Role`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mp_admin_db`.`Role` (
+CREATE TABLE IF NOT EXISTS `mp_admin`.`Role` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` VARCHAR(255) NULL DEFAULT NULL,
@@ -43,21 +43,21 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `mp_admin_db`.`RoleActions`
+-- Table `mp_admin`.`RoleActions`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mp_admin_db`.`RoleActions` (
+CREATE TABLE IF NOT EXISTS `mp_admin`.`RoleActions` (
   `idRole` INT(11) NOT NULL,
   `idAction` INT(11) NOT NULL,
   PRIMARY KEY (`idRole`, `idAction`),
   INDEX `fk_RoleActions_Action_idx` (`idAction` ASC),
   CONSTRAINT `fk_RoleActions_Action`
     FOREIGN KEY (`idAction`)
-    REFERENCES `mp_admin_db`.`Action` (`id`)
+    REFERENCES `mp_admin`.`Action` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_RoleActions_Role`
     FOREIGN KEY (`idRole`)
-    REFERENCES `mp_admin_db`.`Role` (`id`)
+    REFERENCES `mp_admin`.`Role` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -65,9 +65,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `mp_admin_db`.`User`
+-- Table `mp_admin`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mp_admin_db`.`User` (
+CREATE TABLE IF NOT EXISTS `mp_admin`.`User` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `surname` VARCHAR(100) NOT NULL,
@@ -83,21 +83,21 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `mp_admin_db`.`UserActions`
+-- Table `mp_admin`.`UserActions`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mp_admin_db`.`UserActions` (
+CREATE TABLE IF NOT EXISTS `mp_admin`.`UserActions` (
   `idUser` INT(11) NOT NULL,
   `idAction` INT(11) NOT NULL,
   PRIMARY KEY (`idUser`, `idAction`),
   INDEX `fk_UserActions_Action_idx` (`idAction` ASC),
   CONSTRAINT `fk_UserActions_Action`
     FOREIGN KEY (`idAction`)
-    REFERENCES `mp_admin_db`.`Action` (`id`)
+    REFERENCES `mp_admin`.`Action` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_UserActions_User`
     FOREIGN KEY (`idUser`)
-    REFERENCES `mp_admin_db`.`User` (`id`)
+    REFERENCES `mp_admin`.`User` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB

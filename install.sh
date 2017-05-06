@@ -12,7 +12,10 @@ cd dependencies
 ./01-debianPackages.sh
 cd -
 
-
+echo "Creating DataBases..."
+cd database
+./01-createDbs.sh
+cd -
 
 echo ""
 echo "Installing Magma Playout..."
