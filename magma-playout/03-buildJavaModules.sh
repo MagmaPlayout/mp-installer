@@ -16,7 +16,7 @@ cd -
 
 echo ""
 echo "Building mp-devourer..."
-cd core/mp-devourer/
+cd store/mp-devourer/
 ant jar
 cd -
 
