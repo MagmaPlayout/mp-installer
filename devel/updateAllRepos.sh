@@ -40,3 +40,15 @@ echo ""
 echo "Playout API"
 updateDir store/mp-playout-api
 
+
+
+echo ""
+echo "Updating Node projects dependencies..."
+../magma-playout/02-initNodeModules.sh
+
+echo ""
+echo "Building java modules..."
+../magma-playout/03-buildJavaModules.sh
+
+echo ""
+echo "Done."
