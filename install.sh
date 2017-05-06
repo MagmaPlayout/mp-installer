@@ -17,13 +17,13 @@ cd -
 echo ""
 echo "Installing Magma Playout..."
 cd magma-playout/
-./01-getModules.sh
+./01-getModules.sh || true
 ./02-initNodeModules.sh
 ./03-buildJavaModules.sh
 cd -
 
 cd ..
-ln -s mp-installer/magma-playout/ MagmaPlayout
+ln -s mp-installer/magma-playout/ MagmaPlayout || true
 
 
 end=`date +%s`
