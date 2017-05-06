@@ -1,3 +1,4 @@
+#!/bin/bash
 function updateDir {
 	git -C $1 pull
 }
