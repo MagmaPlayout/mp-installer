@@ -22,6 +22,9 @@ cd magma-playout/
 ./03-buildJavaModules.sh
 cd -
 
+cd ..
+ln -s mp-installer/magma-playout/ MagmaPlayout
+
 
 end=`date +%s`
 runtime=$((end-start))
