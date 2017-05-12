@@ -31,8 +31,8 @@ PLAYOUT_UI=$BASE_PATH"gui/mp-ui-playout/"
 
 # Commands
 MELTED_SERVER="/bin/bash -c './start-melted-server; exec /bin/bash -i'" # Keeps terminal open
-REDIS_SERVER="redis-server"
-REDIS_CLIENT="redis-cli"
+REDIS_SERVER="./redis-server"
+REDIS_CLIENT="./redis-cli"
 NODE_SERVER="node server.js"
 ANGULAR_SERVER="ng serve"
 JAVA_CORE="java -jar mp-core.jar"
