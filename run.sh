@@ -1,7 +1,24 @@
 #!/bin/bash
-# Overwrite these configurations:
-REDIS_PATH=~/Documentos/PROYECTO_FINAL/Herramientas/redis-3.2.4/src
-MELTED_PATH=~/melted/20160711
+CONFIG_FILE=run.cfg
+if [ ! -f ./$CONFIG_FILE ]; then
+	echo "REDIS_PATH=" > $CONFIG_FILE
+	echo "MELTED_PATH=" >> $CONFIG_FILE
+ 	
+ 	figlet "Configure first"
+ 	echo "Configure redis and melted path's on run.cfg file before running this script"
+	exit 1 
+fi
+
+# Load configs
+. ./$CONFIG_FILE
+if [ -z $REDIS_PATH ] || [ -z $MELTED_PATH ]; then
+ 	figlet "Configure first"
+ 	echo "Configure redis and melted path's on run.cfg file before running this script"
+	exit 1 
+fi
+
+
+
 
 
 # Relative paths (no need to modify)
@@ -20,8 +37,8 @@ NODE_SERVER="node server.js"
 ANGULAR_SERVER="ng serve"
 JAVA_CORE="java -jar mp-core.jar"
 
-coredevel=$1
-if [[ -n "$coredevel" ]]; then
+
+if [[ $1 == "core" ]]; then
 	figlet "MP - Core Developer"
 	
 	# Runs only core related stuff. For developing.
@@ -30,6 +47,17 @@ if [[ -n "$coredevel" ]]; then
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client1" \
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client2" \
 			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
+			&>/dev/null
+elif [[ $1 == "gui" ]]; then
+	figlet "MP - GUI Developer"
+
+	# Runs only gui related stuff. For developing.
+	gnome-terminal --maximize \
+			--tab --working-directory="$REDIS_PATH" -e "$REDIS_SERVER" --title="redis server" \
+			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client1" \
+			--tab --working-directory="$ADMIN_API" -e "$NODE_SERVER" --title="admin api" \
+			--tab --working-directory="$PLAYOUT_API" -e "$NODE_SERVER" --title="playout api" \			
+			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
 			&>/dev/null
 else	
 	figlet "Magma Playout"
