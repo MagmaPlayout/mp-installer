@@ -1,7 +1,10 @@
 #!/bin/bash
+
 function updateDir {
 	git -C $1 pull
 }
+
+
 
 figlet "GIT PULLING"
 
@@ -42,14 +45,32 @@ echo "Playout API"
 updateDir store/mp-playout-api
 
 
+# Check if any of the package.json files have changed before trying to run the initNodeModules.sh
+function checkUpdate {
+    find $1 -mmin -2 -type f -print | grep package.json
+}
+
+ca=$(checkUpdate core/mp-core-api)
+ap=$(checkUpdate store/mp-admin-api/ )
+pa=$(checkUpdate store/mp-playout-api/)
+up=$(checkUpdate gui/mp-ui-playout/)
 
 echo ""
-echo "Updating Node projects dependencies..."
-../magma-playout/02-initNodeModules.sh
+if [ -n "$ca" ] || [ -n "$ap" ] || [ -n "$pa" ] || [ -n "$up" ]; then
+    echo "Updating Node projects dependencies..."
+    ../magma-playout/02-initNodeModules.sh
+else
+    echo "No need to run initNodeModules..."
+fi
+
 
 echo ""
 echo "Building java modules..."
 ../magma-playout/03-buildJavaModules.sh
+if [ $? -ne 0 ]; then
+	echo "Building java modules ended with error!!!"
+	exit 1
+fi
 
 echo ""
-echo "Done."
+echo "UpdateAllRepos Done."
