@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
 echo "Building stream-m..."
+cd sources
+
 if [ -d stream-m ]; then
 	git pull
 else

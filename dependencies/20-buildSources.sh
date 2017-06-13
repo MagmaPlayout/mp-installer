@@ -11,6 +11,7 @@ cd nasm-2.13.01
 make
 sudo make install
 cd ..
+rm -rf nasm-2.13.01
 echo "Done building nasm..."
 
 cd ..
