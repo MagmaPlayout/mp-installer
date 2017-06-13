@@ -13,4 +13,5 @@ sudo make install
 cd ..
 echo "Done building nasm..."
 
+cd ..
 ./30-stream-m.sh

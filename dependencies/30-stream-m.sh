@@ -16,4 +16,8 @@ cp dist/stream-m.jar $outputDir
 cp dist/player-demo.zip $outputDir
 cp dist/console.zip $outputDir
 cp ../stream-m.properties $outputDir
+
+cd ..
+rm -rf stream-m
+
 echo "Done building stream-m."
