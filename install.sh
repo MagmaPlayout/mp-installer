@@ -9,7 +9,7 @@ echo ""
 
 echo "Installing dependencies..."
 cd dependencies
-./01-debianPackages.sh
+./10-debianPackages.sh
 cd -
 
 echo "Creating DataBases..."
