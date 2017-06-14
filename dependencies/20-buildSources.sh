@@ -16,3 +16,5 @@ echo "Done building nasm..."
 
 cd ..
 ./30-stream-m.sh
+
+./40-melted.sh

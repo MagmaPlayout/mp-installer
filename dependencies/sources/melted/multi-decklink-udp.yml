@@ -1,0 +1,31 @@
+- mlt_service: sdl
+- mlt_service: avformat
+  target: http://localhost:8100/publish/first?password=secret
+  real_time: 1
+  terminate_on_pause: 0 
+  f: webm 
+  vcodec: libvpx 
+  b: 1000k 
+  s: 223x125 
+  acodec: libvorbis 
+  ab: 128k 
+  g: 0 
+  me_method: zero 
+  flags2: fast 
+  preset: ultrafast 
+  tune: zerolatency 
+  crf: 40 
+  qmin: 5 
+  mlt_profile: dv_pal
+
+
+
+
+#UADD multi:/home/ragnarok/melted/20170604/multi-decklink-udp.yml
+#201 OK
+#U0 USET U0 consumer.mlt_profile=atsc_1080i_50
+#200 OK
+#USET U0 consumer.terminate_on_pause=0
+#200 OK
+#USET U0 consumer.real_time=1
+#200 OK
