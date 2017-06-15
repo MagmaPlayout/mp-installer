@@ -12,7 +12,7 @@ output=installation
 cd $installationPath
 ln -s $today $output
 mkdir $output/etc
-ymlPath=$(pwd)/$today
+ymlPath=$(pwd)/$output/etc
 cd -
 
 # copy start/stop scripts to destination
