@@ -2,7 +2,6 @@
 CONFIG_FILE=run.cfg
 if [ ! -f ./$CONFIG_FILE ]; then
 	echo "REDIS_PATH=" > $CONFIG_FILE
-	echo "MELTED_PATH=" >> $CONFIG_FILE
  	
  	figlet "Configure first"
  	echo "Configure redis and melted path's on run.cfg file before running this script"
@@ -11,9 +10,9 @@ fi
 
 # Load configs
 . ./$CONFIG_FILE
-if [ -z $REDIS_PATH ] || [ -z $MELTED_PATH ]; then
+if [ -z $REDIS_PATH ]; then
  	figlet "Configure first"
- 	echo "Configure redis and melted path's on run.cfg file before running this script"
+ 	echo "Configure redis path on run.cfg file before running this script"
 	exit 1 
 fi
 
@@ -23,6 +22,7 @@ fi
 
 # Relative paths (no need to modify)
 BASE_PATH="$(pwd)/magma-playout/"
+MELTED_PATH=$BASE_PATH"/core/melted/installation"
 STREAM_M_PATH=$BASE_PATH"core/stream-m"
 CORE_API=$BASE_PATH"core/mp-core-api/"
 CORE=$BASE_PATH"core/mp-core/dist/"
