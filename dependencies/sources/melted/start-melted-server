@@ -1,0 +1,35 @@
+#!/bin/sh
+
+## Figure out the install path regardless how invoked
+get_prefix() 
+{
+  local PWD=$(pwd)
+  # /opt/melted/start-
+  local prefix=$(dirname "$0")
+  local first_char=$(echo "$0" | head -c1)
+  # ./start-
+  if [ "$prefix" = "." ]; then
+    prefix="$PWD"
+  # melted/start-
+  elif [ "$first_char" != "/" ]; then
+    prefix="$PWD/$prefix"
+  fi
+  echo "$prefix"
+}
+prefix=$(get_prefix)
+printf "Install prefix is \"%s\"\n" "$prefix"
+
+# Setup the environment
+export PATH="$prefix/bin:$PATH"
+export LD_LIBRARY_PATH="$prefix/lib:$LD_LIBRARY_PATH"
+export MLT_REPOSITORY="$prefix/lib/mlt"
+export MLT_DATA="$prefix/share/mlt"
+export FREI0R_PATH="$prefix/lib/frei0r-1"
+
+# Get additional config options (like MLT_PROFILE)
+[ -e "$prefix/etc/start-melted.conf" ] && . "$prefix/etc/start-melted.conf"
+
+. "$prefix/stop-melted-server"
+[ -e "$prefix/etc/melted.conf" ] && config="-c $prefix/etc/melted.conf"
+echo Starting melted $config $@
+melted $config $@
