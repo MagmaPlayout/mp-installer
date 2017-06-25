@@ -2,6 +2,7 @@
 responseCode=0
 coreError=""
 meltedBackendError=""
+meltedStatusError=""
 devourerError=""
 
 echo ""
@@ -11,6 +12,18 @@ ant jar >/dev/null
 
 if [[ $? != 0 ]]; then
 	meltedBackendError="mpc-meltedBackend "
+fi
+
+cd -
+
+
+echo ""
+echo "Building mp-melted-status..."
+cd core/mp-melted-status/
+ant jar >/dev/null
+
+if [[ $? != 0 ]]; then
+	meltedStatusError="mp-melted-status "
 fi
 
 cd -
@@ -42,8 +55,8 @@ cd -
 
 
 echo ""
-if [ -n "$meltedBackendError" ] || [ -n "$coreError" ] || [ -n "$devourerError" ]; then
-	echo "The following modules have errors: "$meltedBackendError$coreError$devourerError
+if [ -n "$meltedBackendError" ] || [ -n "$meltedStatusError" ] || [ -n "$coreError" ] || [ -n "$devourerError" ]; then
+	echo "The following modules have errors: "$meltedBackendError$coreError$devourerError$meltedStatusError
 	exit 1
 fi
 

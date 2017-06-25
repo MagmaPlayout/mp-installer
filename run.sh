@@ -22,8 +22,9 @@ fi
 
 # Relative paths (no need to modify)
 BASE_PATH="$(pwd)/magma-playout/"
-MELTED_PATH=$BASE_PATH"/core/melted/installation"
-STREAM_M_PATH=$BASE_PATH"core/stream-m"
+MELTED_PATH=$BASE_PATH"/core/melted/installation/"
+MELTED_STATUS_PATH=$BASE_PATH"core/mp-melted-status/dist/"
+STREAM_M_PATH=$BASE_PATH"core/stream-m/"
 CORE_API=$BASE_PATH"core/mp-core-api/"
 CORE=$BASE_PATH"core/mp-core/dist/"
 ADMIN_API=$BASE_PATH"store/mp-admin-api/"
@@ -33,6 +34,7 @@ PLAYOUT_UI=$BASE_PATH"gui/mp-ui-playout/"
 
 # Commands
 MELTED_SERVER="/bin/bash -c './start-melted-server; exec /bin/bash -i'" # Keeps terminal open
+MELTED_STATUS="java -jar mp-server-status"
 REDIS_SERVER="./redis-server"
 REDIS_CLIENT="./redis-cli"
 NODE_SERVER="node server.js"
@@ -51,6 +53,8 @@ if [[ $1 == "coreSmall" ]]; then
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client2" \
 			--tab --working-directory="$STREAM_M_PATH" -e "$JAVA_STREAM_M" --title="streamM" \
 			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
+			--tab --working-directory="$MELTED_STATUS_PATH" -e "$MELTED_STATUS" --title="MSTA" \
+
 			&>/dev/null
 elif [[ $1 == "core" ]]; then
 	figlet "MP - Core Developer"
@@ -61,6 +65,7 @@ elif [[ $1 == "core" ]]; then
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client1" \
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client2" \
 			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
+			--tab --working-directory="$MELTED_STATUS_PATH" -e "$MELTED_STATUS" --title="MSTA" \
 			--tab --working-directory="$STREAM_M_PATH" -e "$JAVA_STREAM_M" --title="streamM" \
 			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
 			--tab --working-directory="$ADMIN_API" -e "$NODE_SERVER" --title="admin api" \
@@ -86,6 +91,7 @@ else
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_SERVER" --title="redis server" \
 			--tab --working-directory="$STREAM_M_PATH" -e "$JAVA_STREAM_M" --title="streamM" \
 			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
+			--tab --working-directory="$MELTED_STATUS_PATH" -e "$MELTED_STATUS" --title="MSTA" \
 			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
 			--tab --working-directory="$ADMIN_API" -e "$NODE_SERVER" --title="admin api" \
 			--tab --working-directory="$PLAYOUT_API" -e "$NODE_SERVER" --title="playout api" \
