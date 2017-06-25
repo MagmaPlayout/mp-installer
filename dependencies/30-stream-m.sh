@@ -7,6 +7,9 @@ if [ -d stream-m ]; then
 	git pull
 else
 	git clone https://github.com/MagmaPlayout/stream-m.git
+	cd stream-m
+	git checkout tags/v0.2.2
+	cd ..
 fi
 
 cd stream-m
