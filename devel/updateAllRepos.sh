@@ -21,6 +21,10 @@ echo "MPC Melted Backend"
 updateDir core/mpc-meltedBackend
 
 echo ""
+echo "MP Melted Status"
+updateDir core/mp-melted-status
+
+echo ""
 echo "Core"
 updateDir core/mp-core
 

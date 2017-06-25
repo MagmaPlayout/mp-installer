@@ -15,6 +15,9 @@ mkdir gui
 writeMsg "Getting CORE modules..."
 git clone https://github.com/MagmaPlayout/mpc-meltedBackend.git core/mpc-meltedBackend/
 
+writeMsg "Getting Melted status monitor..."
+git clone https://github.com/MagmaPlayout/mp-melted-status.git core/mp-melted-status/
+
 writeMsg "Getting CORE..."
 git clone https://github.com/MagmaPlayout/mp-core.git core/mp-core/
 
