@@ -34,7 +34,7 @@ PLAYOUT_UI=$BASE_PATH"gui/mp-ui-playout/"
 
 # Commands
 MELTED_SERVER="/bin/bash -c './start-melted-server; exec /bin/bash -i'" # Keeps terminal open
-MELTED_STATUS="java -jar mp-server-status"
+MELTED_STATUS="java -jar mp-melted-status.jar"
 REDIS_SERVER="./redis-server"
 REDIS_CLIENT="./redis-cli"
 NODE_SERVER="node server.js"
