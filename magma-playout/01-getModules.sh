@@ -12,6 +12,9 @@ mkdir core
 mkdir store
 mkdir gui
 
+writeMsg "Getting libconfig..."
+git clone https://github.com/MagmaPlayout/mp-libconfig.git core/mp-libconfig
+
 writeMsg "Getting CORE modules..."
 git clone https://github.com/MagmaPlayout/mpc-meltedBackend.git core/mpc-meltedBackend/
 

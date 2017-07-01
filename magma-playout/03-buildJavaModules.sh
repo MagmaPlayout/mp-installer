@@ -1,9 +1,24 @@
 #!/bin/bash -e
 responseCode=0
 coreError=""
+libconfigError=""
 meltedBackendError=""
 meltedStatusError=""
 devourerError=""
+
+
+
+echo ""
+echo "Building mp-libconfig..."
+cd core/mp-libconfig/
+ant jar >/dev/null
+
+if [[ $? != 0 ]]; then
+	libconfigError="mp-libconfig "
+fi
+
+cd -
+
 
 echo ""
 echo "Building mpc-meltedBackend..."
@@ -55,8 +70,8 @@ cd -
 
 
 echo ""
-if [ -n "$meltedBackendError" ] || [ -n "$meltedStatusError" ] || [ -n "$coreError" ] || [ -n "$devourerError" ]; then
-	echo "The following modules have errors: "$meltedBackendError$coreError$devourerError$meltedStatusError
+if [ -n "$meltedBackendError" ] || [ -n "$meltedStatusError" ] || [ -n "$coreError" ] || [ -n "$devourerError" ] || [ -n "$libconfigError" ]; then
+	echo "The following modules have errors: "$meltedBackendError$coreError$devourerError$meltedStatusError$libconfigError
 	exit 1
 fi
 

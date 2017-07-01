@@ -2,6 +2,7 @@
 
 function updateDir {
 	git -C $1 pull
+	git -C $1 checkout devel
 }
 
 
@@ -15,6 +16,10 @@ git pull
 
 
 cd magma-playout/
+
+echo ""
+echo "MP Libconfig"
+updateDir core/mp-libconfig
 
 echo ""
 echo "MPC Melted Backend"

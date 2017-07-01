@@ -16,6 +16,12 @@ git status
 cd magma-playout/
 
 echo ""
+echo "MP Libconfig"
+echo "cd ../magma-playout/core/mp-libconfig"
+echo ""
+gitStatus core/mp-libconfig
+
+echo ""
 echo "MPC Melted Backend"
 echo "cd ../magma-playout/core/mpc-meltedBacked"
 echo ""
