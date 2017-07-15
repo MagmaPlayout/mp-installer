@@ -1,6 +1,8 @@
 #!/bin/bash
 function gitPush {
-	git -C $1 push
+	if [ $(git status | grep ahead | wc -l) -gt 0 ]; then 
+		git -C $1 push
+    fi
 }
 
 figlet "GIT PUSH"
@@ -10,7 +12,7 @@ echo "Installer"
 cd ../
 echo ""
 echo "cd "$(pwd)
-git push
+gitPush $(pwd)
 
 
 cd magma-playout/
