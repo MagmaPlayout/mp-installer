@@ -1,6 +1,6 @@
 #!/bin/bash
 function gitPush {
-	if [ $(git status | grep ahead | wc -l) -gt 0 ]; then 
+	if [ $(git -C $1 status | grep ahead | wc -l) -gt 0 ]; then 
 		git -C $1 push
     fi
 }
@@ -15,13 +15,14 @@ echo "cd "$(pwd)
 gitPush $(pwd)
 
 
-cd ../magma-playout/
+cd magma-playout/
 
 echo ""
 echo "MP Libconfig"
 echo "cd ../magma-playout/core/mp-libconfig"
 echo ""
 gitPush core/mp-libconfig
+echo $(pwd)/core/mp-libconfig
 
 echo ""
 echo "MPC Melted Backend"
