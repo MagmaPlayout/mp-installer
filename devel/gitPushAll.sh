@@ -15,7 +15,7 @@ echo "cd "$(pwd)
 gitPush $(pwd)
 
 
-cd magma-playout/
+cd ../magma-playout/
 
 echo ""
 echo "MP Libconfig"
