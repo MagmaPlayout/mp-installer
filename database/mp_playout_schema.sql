@@ -95,6 +95,8 @@ CREATE TABLE IF NOT EXISTS `mp_playout`.`Piece` (
   `duration` VARCHAR(45) NULL,
   `filterId` INT NULL,
   `path` VARCHAR(255) NOT NULL,
+  `frameCount` INT NOT NULL,
+  `frameRate` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   INDEX `mediaId_idx` (`mediaId` ASC),
