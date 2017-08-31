@@ -12,7 +12,6 @@ output=installation
 cd $installationPath
 ln -s $today $output
 mkdir $output/etc
-ymlPath=$(pwd)/$output/etc
 cd -
 
 # copy start/stop scripts to destination
@@ -21,8 +20,5 @@ cp stop-melted-server $installationPath/$output/
 
 # copy magma playout's melted config to destination
 cp melted.conf $installationPath/$output/etc
-cp multi-decklink-udp.yml $installationPath/$output/etc
-
-echo "uadd multi:$ymlPath/multi-decklink-udp.yml" >> $installationPath/$output/etc/melted.conf
 
 echo "Done building melted."

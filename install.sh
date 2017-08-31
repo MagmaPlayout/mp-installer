@@ -10,6 +10,8 @@ echo ""
 echo "Installing dependencies..."
 cd dependencies
 ./10-debianPackages.sh
+./20-buildSources.sh
+./40-melted.sh
 cd -
 
 echo "Creating DataBases..."
