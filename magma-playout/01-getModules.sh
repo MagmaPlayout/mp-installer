@@ -8,12 +8,12 @@ function writeMsg {
 writeMsg "Magma Playout - Module downloader"
 
 writeMsg "Creating dir structure..."
-mkdir core
-mkdir store
-mkdir gui
+mkdir -p core
+mkdir -p store
+mkdir -p gui
 
 writeMsg "Getting libconfig..."
-git clone https://github.com/MagmaPlayout/mp-libconfig.git core/mp-libconfig
+git clone https://github.com/MagmaPlayout/mp-libconfig.git core/mp-libconfig/
 
 writeMsg "Getting CORE modules..."
 git clone https://github.com/MagmaPlayout/mpc-meltedBackend.git core/mpc-meltedBackend/
@@ -37,6 +37,6 @@ writeMsg "Getting MEDIA manager..."
 git clone https://github.com/MagmaPlayout/mp-devourer.git store/mp-devourer/
 
 writeMsg "Getting Frontend..."
-git clone https://github.com/MagmaPlayout/mp-ui-playout.git gui/mp-ui-playout
+git clone https://github.com/MagmaPlayout/mp-ui-playout.git gui/mp-ui-playout/
 
-writeMsg "Done."
+writeMsg "Done cloning modules."

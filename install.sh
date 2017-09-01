@@ -9,22 +9,21 @@ echo ""
 
 echo "Installing dependencies..."
 cd dependencies
-./10-debianPackages.sh
-./20-buildSources.sh
-./40-melted.sh
+ ./10-debianPackages.sh
+ ./20-buildSources.sh # calls 30-getRedis.sh and 40-melted.sh
 cd -
 
 echo "Creating DataBases..."
 cd database
-./01-createDbs.sh
+ ./01-createDbs.sh
 cd -
 
 echo ""
 echo "Installing Magma Playout..."
 cd magma-playout/
-./01-getModules.sh || true
-./02-initNodeModules.sh
-./03-buildJavaModules.sh
+ ./01-getModules.sh || true
+ ./02-initNodeModules.sh
+ ./03-buildJavaModules.sh
 cd -
 
 cd ..

@@ -1,21 +1,4 @@
 #!/bin/bash
-CONFIG_FILE=run.cfg
-if [ ! -f ./$CONFIG_FILE ]; then
-	echo "REDIS_PATH=" > $CONFIG_FILE
- 	
- 	figlet "Configure first"
- 	echo "Configure redis and melted path's on run.cfg file before running this script"
-	exit 1 
-fi
-
-# Load configs
-. ./$CONFIG_FILE
-if [ -z $REDIS_PATH ]; then
- 	figlet "Configure first"
- 	echo "Configure redis path on run.cfg file before running this script"
-	exit 1 
-fi
-
 
 # Relative paths (no need to modify)
 BASE_PATH="$(pwd)/magma-playout/"
@@ -26,7 +9,7 @@ CORE=$BASE_PATH"core/mp-core/dist/"
 ADMIN_API=$BASE_PATH"store/mp-admin-api/"
 PLAYOUT_API=$BASE_PATH"store/mp-playout-api/"
 PLAYOUT_UI=$BASE_PATH"gui/mp-ui-playout/"
-
+REDIS_PATH=$BASE_PATH"/core/redis/src"
 
 # Commands
 MELTED_SERVER="/bin/bash -c './start-melted-server; exec /bin/bash -i'" # Keeps terminal open
