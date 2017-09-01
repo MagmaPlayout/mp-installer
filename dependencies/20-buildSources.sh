@@ -17,3 +17,5 @@ cd ..
 ./30-getRedis.sh
 
 ./40-melted.sh
+
+./50-getNode.sh

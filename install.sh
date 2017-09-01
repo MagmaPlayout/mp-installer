@@ -10,7 +10,7 @@ echo ""
 echo "Installing dependencies..."
 cd dependencies
  ./10-debianPackages.sh
- ./20-buildSources.sh # calls 30-getRedis.sh and 40-melted.sh
+ ./20-buildSources.sh # calls 30-getRedis.sh, 40-melted.sh, 50-getNode.sh
 cd -
 
 echo "Creating DataBases..."
