@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+echo "Getting Java 8..."
+
+DIR=/usr/local/java
+mkdir -p $DIR
+cd $DIR
+ wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
+
+ echo "Configuring Java..."
+ tar -zxf jdk-8u144-linux-x64.tar.gz
+ JDIR=jdk1.8.0_131
+ cd $JDIR
+ sudo update-alternatives --install /usr/bin/java java $DIR/$JDIR/bin/java 100
+ sudo update-alternatives --config java 
+ sudo update-alternatives --install /usr/bin/javac javac $DIR/$JDIR/bin/javac 100
+ sudo update-alternatives --config javac
+ sudo update-alternatives --install /usr/bin/jar jar $DIR/$JDIR/bin/jar 100
+ sudo update-alternatives --config jar
+ sudo export JAVA_HOME=$DIR/$JDIR
+ sudo export JRE_HOME=$DIR/$JDIR/jre 	
+ sudo export PATH=$PATH:$DIR/$JDIR/bin:$DIR/$JDIR/jre/bin
+ 
