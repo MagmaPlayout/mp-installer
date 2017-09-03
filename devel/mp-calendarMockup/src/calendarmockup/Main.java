@@ -3,6 +3,8 @@ package calendarmockup;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,7 +85,7 @@ public class Main {
                 
                 HashMap jobj = new HashMap();
                 jobj.put("pieceId", piece.id);
-                jobj.put("startDateTime", start);
+                jobj.put("startDateTime", ZonedDateTime.of(start, ZoneId.of("Z")));
                 JSONObject obj = new JSONObject(jobj);
                 resty.json(occurrencesPath, Resty.content(obj));    // Manda el insert a la bd
 
