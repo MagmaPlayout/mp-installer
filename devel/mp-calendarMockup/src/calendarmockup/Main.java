@@ -38,11 +38,15 @@ public class Main {
         }
     }
 
+    /**
+     *
+     * @param args first argument indicates how many minutes from now to start the playlist
+     */
     public static void main(String[] args) {
         Main m = new Main();
         
         if(args.length == 0){
-            m.init("2");
+            m.init("1");
         }
         else {
             m.init(args[0]);
@@ -54,12 +58,17 @@ public class Main {
      * @param startingDelay la reproducción del primer clip empieza desde now + startingDelay minutes
      */
     private void init(String startingDelay){
+        System.out.println("Deleting all occurrences...");
         deleteAllOccurrences();
+
+        System.out.println("Generating new playlist...\n");
         insertOccurrences(startingDelay);
 
         // Send calchange
         redis = new Jedis("localhost", 6379, 1000);
         redis.publish("PCCP", "CALCHANGE");
+        System.out.println("\nCALCHANGE command sent!");
+        System.out.println("Bye.");
     }
 
     
@@ -88,6 +97,7 @@ public class Main {
                 jobj.put("startDateTime", ZonedDateTime.of(start, ZoneId.of("Z")));
                 JSONObject obj = new JSONObject(jobj);
                 resty.json(occurrencesPath, Resty.content(obj));    // Manda el insert a la bd
+                System.out.println("Encolando "+piece.id+", starts: "+start);
 
                 prevStart = start;
                 prevDur = piece.duration;
@@ -141,14 +151,10 @@ public class Main {
 
                 occurrencesIds.add(id);
             }
-        } catch (IOException ex) {
-            // TODO: handle
-            // MALFORMED URL (por ej)
+        } catch (IOException ex ) {
             ex.printStackTrace();
         } catch (JSONException ex) {
-            // Si la response del server no es json entra acá
-            // TODO: handle
-            ex.printStackTrace();
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return occurrencesIds;
