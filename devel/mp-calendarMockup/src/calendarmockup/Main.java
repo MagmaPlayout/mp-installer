@@ -85,7 +85,11 @@ public class Main {
                 if(first){
                     // El primero va startingDelay minutos a partir de ahora
                     first = false;
-                    start = LocalDateTime.now().plus(Integer.parseInt(startingDelay), ChronoUnit.MINUTES);
+//                    start = LocalDateTime.now().plus(Integer.parseInt(startingDelay), ChronoUnit.MINUTES);
+
+                    // To test when a clip starts before NOW but ends AFTER now
+                    start = LocalDateTime.now().minus(30, ChronoUnit.SECONDS);
+                    System.out.println("NOW: "+LocalDateTime.now());
                 }
                 else {
                     // Pongo uno a continuación del otro
@@ -97,7 +101,7 @@ public class Main {
                 jobj.put("startDateTime", ZonedDateTime.of(start, ZoneId.of("Z")));
                 JSONObject obj = new JSONObject(jobj);
                 resty.json(occurrencesPath, Resty.content(obj));    // Manda el insert a la bd
-                System.out.println("Encolando "+piece.id+", starts: "+start);
+                System.out.println("Encolando "+piece.id+", starts: "+start+", duration (seconds): "+piece.duration.toMillis()/1000);
 
                 prevStart = start;
                 prevDur = piece.duration;

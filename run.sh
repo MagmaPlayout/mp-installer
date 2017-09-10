@@ -41,11 +41,11 @@ elif [[ $1 == "core" ]]; then
 #			--tab --working-directory="$MELTED_STATUS_PATH" -e "$MELTED_STATUS" --title="MSTA" \
 #			--tab --working-directory="$ADMIN_API" -e "$NODE_SERVER" --title="admin api" \
 #			--tab --working-directory="$PLAYOUT_UI" -e "$ANGULAR_SERVER" --title="frontend" \
+#			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
 	# Runs everything but core java module. For developing.
 	gnome-terminal --maximize \
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_SERVER" --title="redis server" \
 			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
-			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
 			--tab --working-directory="$PLAYOUT_API" -e "$NODE_SERVER" --title="playout api" \
 			&>/dev/null
 elif [[ $1 == "gui" ]]; then
