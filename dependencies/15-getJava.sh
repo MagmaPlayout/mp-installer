@@ -9,7 +9,7 @@ cd $DIR
 
  echo "Configuring Java..."
  tar -zxf jdk-8u144-linux-x64.tar.gz
- JDIR=jdk1.8.0_131
+ JDIR=jdk1.8.0_144
  cd $JDIR
  sudo update-alternatives --install /usr/bin/java java $DIR/$JDIR/bin/java 100
  sudo update-alternatives --config java 
@@ -17,7 +17,9 @@ cd $DIR
  sudo update-alternatives --config javac
  sudo update-alternatives --install /usr/bin/jar jar $DIR/$JDIR/bin/jar 100
  sudo update-alternatives --config jar
- sudo export JAVA_HOME=$DIR/$JDIR
- sudo export JRE_HOME=$DIR/$JDIR/jre 	
- sudo export PATH=$PATH:$DIR/$JDIR/bin:$DIR/$JDIR/jre/bin
+ touch ~/.bash_profile
+ echo "export JAVA_HOME=$DIR/$JDIR" >> ~/.bash_profile
+ echo "export JRE_HOME=$DIR/$JDIR/jre" >> ~/.bash_profile 	
+ echo "export PATH=$PATH:$DIR/$JDIR/bin:$DIR/$JDIR/jre/bin" >> ~/.bash_profile
+ 
  
