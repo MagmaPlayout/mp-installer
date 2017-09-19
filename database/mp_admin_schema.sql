@@ -103,6 +103,47 @@ CREATE TABLE IF NOT EXISTS `mp_admin`.`UserActions` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+-- -----------------------------------------------------
+-- Table `mp_admin`.`Supplier`
+-- -----------------------------------------------------
+CREATE TABLE `mp_admin`.`Supplier` (
+ `id` INT NOT NULL AUTO_INCREMENT,
+ `phone` VARCHAR(45) NULL,
+ `name` VARCHAR(45) NOT NULL,
+ `email` VARCHAR(45) NULL,
+ PRIMARY KEY (`id`));
+
+-- -----------------------------------------------------
+-- Table `mp_admin`.`RawMedia`
+-- -----------------------------------------------------
+CREATE TABLE `mp_admin`.`RawMedia` (
+ `id` INT NOT NULL AUTO_INCREMENT,
+ `idSupplier` INT NULL,
+ `location` VARCHAR(255) NULL,
+ PRIMARY KEY (`id`),
+ INDEX `fk_RawMedia_1_idx` (`idSupplier` ASC),
+ CONSTRAINT `fk_RawMedia_Supplier`
+   FOREIGN KEY (`idSupplier`)
+   REFERENCES `mp_admin`.`Supplier` (`id`)
+   ON DELETE NO ACTION
+   ON UPDATE NO ACTION);
+
+-- -----------------------------------------------------
+-- Table `mp_admin`.`PlayoutLog`
+-- -----------------------------------------------------
+CREATE TABLE `mp_admin`.`PlayoutLog` (
+ `timestamp` DATETIME NOT NULL,
+ `idRawMedia` INT NOT NULL,
+ `filter` VARCHAR(45) NULL,
+ `sketch` VARCHAR(45) NULL,
+ PRIMARY KEY (`timestamp`),
+ INDEX `fk_PlayoutLog_1_idx` (`idRawMedia` ASC),
+ CONSTRAINT `fk_PlayoutLog_RawMedia`
+   FOREIGN KEY (`idRawMedia`)
+   REFERENCES `mp_admin`.`RawMedia` (`id`)
+   ON DELETE NO ACTION
+   ON UPDATE NO ACTION);
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
