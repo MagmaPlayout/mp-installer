@@ -136,7 +136,9 @@ CREATE TABLE `mp_admin`.`PlayoutLog` (
  `idRawMedia` INT NOT NULL,
  `filter` VARCHAR(45) NULL,
  `sketch` VARCHAR(45) NULL,
- PRIMARY KEY (`timestamp`),
+ `starttime` DATETIME NOT NULL,
+ `endtime` DATETIME NOT NULL,
+ PRIMARY KEY (`starttime`),
  INDEX `fk_PlayoutLog_1_idx` (`idRawMedia` ASC),
  CONSTRAINT `fk_PlayoutLog_RawMedia`
    FOREIGN KEY (`idRawMedia`)

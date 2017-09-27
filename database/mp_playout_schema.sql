@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `mp_playout`.`Media` (
   `frameCount` INT NULL,
   `description` TEXT NULL,
   `resolution` VARCHAR(45) NULL,
+  `provider` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC))
