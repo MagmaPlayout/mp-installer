@@ -13,5 +13,11 @@ echo ""
 echo "Inserting initial data..."
 mysql -u root -p < initial_data.sql
 
+# TODO: resolver
+echo ""
+echo "CARGANDO DATOS TEMPORALES..."
+mysql -u root -p < temp.sql
+
+
 echo ""
 echo "Done."
