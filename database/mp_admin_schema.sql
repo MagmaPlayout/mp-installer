@@ -117,7 +117,7 @@ CREATE TABLE `mp_admin`.`Supplier` (
 -- Table `mp_admin`.`RawMedia`
 -- -----------------------------------------------------
 CREATE TABLE `mp_admin`.`RawMedia` (
- `id` INT NOT NULL AUTO_INCREMENT,
+ `id` INT NOT NULL,
  `idSupplier` INT NULL,
  `location` VARCHAR(255) NULL,
  PRIMARY KEY (`id`),
