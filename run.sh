@@ -21,27 +21,23 @@ ANGULAR_SERVER="ng serve"
 JAVA_CORE="java -jar mp-core.jar"
 
 
-if [[ $1 == "coreSmall" ]]; then
+if [[ $1 == "core" ]]; then
 	figlet "MP - Core Developer"
-	
+
 	# Runs only core related stuff. For developing.
 	gnome-terminal --maximize \
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_SERVER" --title="redis server" \
-			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client1" \
-			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client2" \
 			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
-			--tab --working-directory="$MELTED_STATUS_PATH" -e "$MELTED_STATUS" --title="MSTA" \
+			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
+			--tab --working-directory="$ADMIN_API" -e "$NODE_SERVER" --title="admin api" \
+			--tab --working-directory="$PLAYOUT_API" -e "$NODE_SERVER" --title="playout api" \
+			--tab --working-directory="$PLAYOUT_UI" -e "$ANGULAR_SERVER" --title="frontend" \
+			&>/dev/null
 
 			&>/dev/null
-elif [[ $1 == "core" ]]; then
+elif [[ $1 == "coreSmall" ]]; then
 	figlet "MP - Core Developer"
 	
-#			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client1" \
-#			--tab --working-directory="$REDIS_PATH" -e "$REDIS_CLIENT" --title="redis client2" \
-#			--tab --working-directory="$MELTED_STATUS_PATH" -e "$MELTED_STATUS" --title="MSTA" \
-#			--tab --working-directory="$ADMIN_API" -e "$NODE_SERVER" --title="admin api" \
-#			--tab --working-directory="$PLAYOUT_UI" -e "$ANGULAR_SERVER" --title="frontend" \
-#			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
 	# Runs everything but core java module. For developing.
 	gnome-terminal --maximize \
 			--tab --working-directory="$REDIS_PATH" -e "$REDIS_SERVER" --title="redis server" \
