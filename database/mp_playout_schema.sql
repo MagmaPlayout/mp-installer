@@ -194,6 +194,52 @@ CREATE TABLE IF NOT EXISTS `mp_playout`.`FilterArgs` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table structure for table `TagPieces`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `TagPieces`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TagPieces` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tagId` int(11) NOT NULL,
+  `pieceId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_TagPieces_1_idx` (`tagId`),
+  CONSTRAINT `fk_TagPieces_1` FOREIGN KEY (`tagId`) REFERENCES `Tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- -----------------------------------------------------
+-- Table structure for table `TagPlaylists`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `TagPlaylists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TagPlaylists` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tagId` int(11) NOT NULL,
+  `playlistId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_TagPlaylists_1_idx` (`tagId`),
+  CONSTRAINT `fk_TagPlaylists_1` FOREIGN KEY (`tagId`) REFERENCES `Tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- -----------------------------------------------------
+-- Table structure for table `Tags`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Tags` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
