@@ -132,7 +132,6 @@ CREATE TABLE `mp_admin`.`RawMedia` (
 -- Table `mp_admin`.`PlayoutLog`
 -- -----------------------------------------------------
 CREATE TABLE `mp_admin`.`PlayoutLog` (
- `timestamp` DATETIME NOT NULL,
  `idRawMedia` INT NOT NULL,
  `filter` VARCHAR(45) NULL,
  `sketch` VARCHAR(45) NULL,
