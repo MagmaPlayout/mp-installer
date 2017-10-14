@@ -53,7 +53,7 @@ gitStatus gui/mp-ui-playout
 
 echo ""
 echo "Admin API"
-echo "cd store/mp-admin-api"
+echo "cd ../magma-playout/store/mp-admin-api"
 echo ""
 gitStatus ../magma-playout/store/mp-admin-api
 
