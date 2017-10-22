@@ -41,6 +41,7 @@ DROP TABLE IF EXISTS `FilterArgs`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FilterArgs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `filterId` int(11) NOT NULL,
   `key` varchar(45) NOT NULL,
   `description` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -125,7 +126,6 @@ CREATE TABLE `Occurrence` (
   `playlistId` int(11) DEFAULT NULL,
   `pieceId` int(11) DEFAULT NULL,
   `startDateTime` varchar(45) NOT NULL,
-  `filterId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `playlistId_idx` (`playlistId`),
@@ -271,4 +271,4 @@ CREATE TABLE `Thumbnail` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-22 12:11:20
+-- Dump completed on 2017-10-22 18:05:28
