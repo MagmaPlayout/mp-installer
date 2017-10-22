@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `mp_playout` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `mp_playout`;
 -- MySQL dump 10.16  Distrib 10.1.26-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: mp_playout
@@ -39,12 +41,33 @@ DROP TABLE IF EXISTS `FilterArgs`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FilterArgs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `filterId` int(11) DEFAULT NULL,
-  `key` varchar(45) DEFAULT NULL,
+  `key` varchar(45) NOT NULL,
+  `description` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FilterConfig`
+--
+
+DROP TABLE IF EXISTS `FilterConfig`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `FilterConfig` (
+  `id` varchar(45) NOT NULL,
+  `pieceId` int(11) NOT NULL,
+  `filterId` int(11) NOT NULL,
+  `filterArgId` int(11) NOT NULL,
   `value` varchar(45) DEFAULT NULL,
+  `filterIndex` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_FilterArgs_1_idx` (`filterId`),
-  CONSTRAINT `fk_FilterArgs_filterId_Filter_id` FOREIGN KEY (`filterId`) REFERENCES `Filter` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_FilterConfig_1_idx` (`pieceId`),
+  KEY `fk_FC_filter_idx` (`filterId`),
+  KEY `fk_FC_filterArgs_idx` (`filterArgId`),
+  CONSTRAINT `fk_FC_filter` FOREIGN KEY (`filterId`) REFERENCES `Filter` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_FC_filterArgs` FOREIGN KEY (`filterArgId`) REFERENCES `FilterArgs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_FC_piece` FOREIGN KEY (`pieceId`) REFERENCES `Piece` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -125,16 +148,12 @@ CREATE TABLE `Piece` (
   `name` varchar(255) DEFAULT NULL,
   `resolution` varchar(45) DEFAULT NULL,
   `duration` varchar(45) DEFAULT NULL,
-  `filterId` int(11) DEFAULT NULL,
   `path` varchar(255) NOT NULL,
   `frameCount` int(11) NOT NULL,
   `frameRate` int(11) NOT NULL,
-  `sketchId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `mediaId_idx` (`mediaId`),
-  KEY `FK_Piece_filterId_Filter_id_idx` (`filterId`),
-  CONSTRAINT `FK_Piece_filterId_Filter_id` FOREIGN KEY (`filterId`) REFERENCES `Filter` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_Piece_mediaId_Media_id` FOREIGN KEY (`mediaId`) REFERENCES `Media` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -252,4 +271,4 @@ CREATE TABLE `Thumbnail` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-15 20:29:48
+-- Dump completed on 2017-10-22 12:11:20
