@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `FilterConfig`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FilterConfig` (
-  `id` varchar(45) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `pieceId` int(11) NOT NULL,
   `filterId` int(11) NOT NULL,
   `filterArgId` int(11) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `Media` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +155,7 @@ CREATE TABLE `Piece` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `mediaId_idx` (`mediaId`),
   CONSTRAINT `FK_Piece_mediaId_Media_id` FOREIGN KEY (`mediaId`) REFERENCES `Media` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,4 +271,4 @@ CREATE TABLE `Thumbnail` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-22 18:05:28
+-- Dump completed on 2017-10-23 14:28:36
