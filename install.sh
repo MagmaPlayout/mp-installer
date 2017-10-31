@@ -14,7 +14,6 @@ if [[ $user -eq 0 ]]; then
 	exit 1;
 fi
 
-exit 0;
 echo "Installing dependencies..."
 cd dependencies
  ./10-debianPackages.sh
