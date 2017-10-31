@@ -14,3 +14,9 @@ INSERT INTO `mp_playout`.`Filter` (`id`, `name`, `description`) VALUES ('3', 'ol
 INSERT INTO `mp_playout`.`Filter` (`id`, `name`, `description`) VALUES ('1', 'dust', 'Applies dust particles over the output');
 INSERT INTO `mp_playout`.`Filter` (`id`, `name`, `description`) VALUES ('5', 'watermark', 'Displays an image over the output');
 
+
+INSERT INTO `mp_playout`.`FilterArgs` (`id`, `filterId`, `key`, `description`) VALUES ('1', '1', 'mlt_service', 'id of filter');
+INSERT INTO `mp_playout`.`FilterArgs` (`id`, `filterId`, `key`, `description`) VALUES ('2', '2', 'mlt_service', 'id of filter');
+INSERT INTO `mp_playout`.`FilterArgs` (`id`, `filterId`, `key`, `description`) VALUES ('3', '3', 'mlt_service', 'id of filter');
+INSERT INTO `mp_playout`.`FilterArgs` (`id`, `filterId`, `key`, `description`) VALUES ('4', '4', 'mlt_service', 'id of filter');
+INSERT INTO `mp_playout`.`FilterArgs` (`id`, `filterId`, `key`, `description`) VALUES ('5', '5', 'mlt_service', 'id of filter');
