@@ -22,37 +22,37 @@ necesario de internet o desde el archivo **MagmaPlayout.zip**.
 1. El primer paso es instalar el comando _sudo_, configurarlo y reiniciar la computadora.  
 Desde una terminal ejecutar los siguientes comandos:
 
->  ```bash
->  su  
->  apt-get -y install sudo  
->  # En el siguiente comando reemplazar <username> con el
->  # nombre del usuario de Debian que se está utilizando
->  usermod -aG sudo <username>  
->  # La computadora se va a reiniciar
->  reboot
->  ``` 
+```bash
+su  
+apt-get -y install sudo  
+# En el siguiente comando reemplazar <username> con el
+# nombre del usuario de Debian que se está utilizando
+usermod -aG sudo <username>  
+# La computadora se va a reiniciar
+reboot
+``` 
 
 ### Instalación desde internet
 
 Abrir una terminal y ejecutar los siguientes comandos:  
 
-> ```bash
-> cd
-> sudo apt-get -y install git
-> git clone https://github.com/MagmaPlayout/mp-installer.git
-> cd mp-installer
-> ./install.sh
-> ```
+```bash
+cd
+sudo apt-get -y install git
+git clone https://github.com/MagmaPlayout/mp-installer.git
+cd mp-installer
+./install.sh
+```
 
 ### Instalación desde MagmaPlayout.zip
 
 Copiar el archivo _MagmaPlayout.zip_ al directorio _~/_, abrir una terminal 
 y ejecutar los siguientes comandos:  
 
-> ```bash
-> cd ~/mp-installer/
-> ./install.sh
-> ```
+```bash
+cd ~/mp-installer/
+./install.sh
+```
 
 ## Configuración
 
