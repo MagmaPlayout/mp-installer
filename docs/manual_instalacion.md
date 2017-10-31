@@ -21,6 +21,7 @@ necesario de internet o desde el archivo **MagmaPlayout.zip**.
 
 1. El primer paso es instalar el comando _sudo_, configurarlo y reiniciar la computadora.  
 Desde una terminal ejecutar los siguientes comandos:
+
 >  ```bash
 >  su  
 >  apt-get -y install sudo  
@@ -35,19 +36,23 @@ Desde una terminal ejecutar los siguientes comandos:
 
 Abrir una terminal y ejecutar los siguientes comandos:  
 
-1. ```cd```
-1. ```sudo apt-get -y install git```
-1. ```git clone https://github.com/MagmaPlayout/mp-installer.git```
-1. ```cd mp-installer``` 
-1. ```./install.sh```
+> ```bash
+> cd
+> sudo apt-get -y install git
+> git clone https://github.com/MagmaPlayout/mp-installer.git
+> cd mp-installer
+> ./install.sh
+> ```
 
 ### Instalación desde MagmaPlayout.zip
 
 Copiar el archivo _MagmaPlayout.zip_ al directorio _~/_, abrir una terminal 
 y ejecutar los siguientes comandos:  
 
-1. ```cd ~/mp-installer/```
-1. ```./install.sh```
+> ```bash
+> cd ~/mp-installer/
+> ./install.sh
+> ```
 
 ## Configuración
 
