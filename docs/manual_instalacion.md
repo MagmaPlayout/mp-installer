@@ -101,13 +101,10 @@ devourer_thumb_dir: EDIT ME!
 mlt_framework_dir: EDIT ME!
 # Argumentos de transcodificación
 devourer_ffmpeg_args: -f avi -c:v libx264 -qp 0
-
-# ------------------------------- #
-# Common config ----------------- #
-# ------------------------------- #
-
-# Urls de las APIs para las BD 
-playout_api_url: http://localhost:8001/api/
-admin_api_url: http://localhost:8080/api/
 ```
+
+Existen más claves configurables que permiten generar una instalación distribuida en más de una PC. El modo
+distribuido no está soportado completamente todavía.  
+El módulo _mp-core_ muestra todas las claves configurables al iniciar y sus valores cargados.
+
 

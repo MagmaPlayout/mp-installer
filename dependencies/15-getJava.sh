@@ -5,7 +5,7 @@ echo "Getting Java 8..."
 DIR=/usr/local/java
 sudo mkdir -p $DIR
 cd $DIR
- sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
+ sudo wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz
 
  echo "Configuring Java..."
  sudo tar -zxf jdk-8u144-linux-x64.tar.gz
