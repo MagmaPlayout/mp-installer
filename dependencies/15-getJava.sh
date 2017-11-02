@@ -8,9 +8,9 @@ cd $DIR
  sudo wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz
 
  echo "Configuring Java..."
- sudo tar -zxf jdk-8u144-linux-x64.tar.gz
+ sudo tar -zxf jdk-8u151-linux-x64.tar.gz
  
-JDIR=jdk1.8.0_144
+JDIR=jdk1.8.0_151
 cd $JDIR
  sudo update-alternatives --install /usr/bin/java java $DIR/$JDIR/bin/java 100
  sudo update-alternatives --config java 
