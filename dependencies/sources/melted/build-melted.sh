@@ -905,6 +905,11 @@ function configure_compile_install_subproject {
   OLDCFLAGS=$CFLAGS
   OLDLD_LIBRARY_PATH=$LD_LIBRARY_PATH
   cmd pushd .
+  
+  # Quick & dirty workarround for lame people renaming their repo
+  if [[ $1 -eq "lame" ]]; then
+	mv deprecated-lame-mirror-RELEASE__3_99_5 lame
+  fi
 
   # Change to right directory
   cmd cd $1 || die "Unable to change to directory $1"
