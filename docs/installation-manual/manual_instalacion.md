@@ -32,7 +32,7 @@ usermod -aG sudo <username>
 reboot
 ``` 
 
-### Descargar el instalador de Magma Playout
+### Descargar e instalar Magma Playout
 
 Abrir una terminal y ejecutar lo comandos descritos a continuación.  
 
@@ -46,10 +46,11 @@ cd mp-installer
 
 Durante la instalación se requiere la interacción del usuario para las siguientes acciones:
 1. Ingresar la contraseña del usuario.
-1. Seleccionar la instalación de java cuyo path sea "/usr/local/java/jdk1.8.0_151/java".  
+1. Ingresar la contraseña de administración de mariadb-server cuando se presente la siguiente pantalla:  
+> ![mariadb-server password](install_imgs/mariadb_password.png)
+3. Seleccionar la instalación de java cuyo path sea "/usr/local/java/jdk1.8.0_151/java".  
 > ![java_alternatives](install_imgs/java_alternatives.png)
-3. Ingresar la contraseña de administración de mariadb-server cuando se presente la siguiente pantalla:  
-> 
+
 
 
 ## Configuración
@@ -60,9 +61,8 @@ El sistema cuenta con los siguientes archivos de configuración:
 1. ```~/mp-installer/magma-playout/store/mp-admin-api/config.js```
 1. ```~/mp-installer/magma-playout/store/mp-playout-api/config.js```
 
-De los cuatro archivos enumerados solo el primero debe ser modificado, los restantes
-cuentan con una configuración válida que no es necesario cambiar.  
-A continuación se describen las claves de cada archivo de configuración.
+Los archivos de configuración se cargan con datos por defecto válidos, por lo que no es necesario cambiarlos si se desea utilizar la configuración provista.  
+A continuación se describen las claves del archivo de configuración principal:  
 
 ### ~/.magma-playout.conf
 ```bash
@@ -76,12 +76,12 @@ melted_playlist_max_duration=120
 # de la lista de melted
 melted_appender_worker_freq=5
 # Directorio a la instalación de melt
-melt_path=/usr/bin/melt/melt
+melt_path=/<installation>/core/melted/installation/bin/melt
 # Directorio al media por defecto. Debe ser un directorio válido a una imágen.
-default_media_path=/usr/local/magma-playout/default.mlt
+default_media_path=/<installation>/../dependencies/default.png
 # Directorio temporal donde se van a poner los archivos .mlt 
 # "espaciadores" con el media por defecto
-mlt_spacers_path=/usr/local/magma-playout/spacers/
+mlt_spacers_path=/<installation>/media/spacers/
 
 # ------------------------------- #
 # mp-devourer config ------------ #
@@ -90,19 +90,15 @@ mlt_spacers_path=/usr/local/magma-playout/spacers/
 # FPS al cual se van a transcodear todos los medias cargados
 medias_fps=60
 # Directorio de entrada del cual cargar los medias al sistema
-devourer_input_dir= EDIT ME!
+devourer_input_dir=/installation/media/input
 # Directorio de salida donde se guardan los medias transcodeados
-devourer_output_dir= EDIT ME!
+devourer_output_dir=/<installation>/media/output
 # Directorio de thumbnails del frontend
-devourer_thumb_dir= EDIT ME!
+devourer_thumb_dir=/<installation>/gui/mp-ui-playout/src/assets/images/media-thumbnails/
 # Directorio de la instalación del MLT Framework
-mlt_framework_dir= EDIT ME!
+mlt_framework_dir=/<installation>/core/melted/installation/bin/
 # Argumentos de transcodificación
 devourer_ffmpeg_args= -f avi -c:v libx264 -qp 0
 ```
-
-Existen más claves configurables que permiten generar una instalación distribuida en más de una PC. El modo
-distribuido no está soportado completamente todavía.  
-El módulo _mp-core_ muestra todas las claves configurables al iniciar y sus valores cargados.
 
 

@@ -355,7 +355,7 @@ function set_globals {
   if test 0 = "$SWFDEC_HEAD" -a "$SWFDEC_REVISION" ; then
     REVISIONS[7]="$SWFDEC_REVISION"
   fi
-  REVISIONS[8]="lame-RELEASE__3_99_5"
+  REVISIONS[8]="deprecated-lame-mirror-RELEASE__3_99_5"
 
   # Figure out the install dir - we may not install, but then we know it.
   FINAL_INSTALL_DIR=$INSTALL_DIR
@@ -906,11 +906,6 @@ function configure_compile_install_subproject {
   OLDLD_LIBRARY_PATH=$LD_LIBRARY_PATH
   cmd pushd .
   
-  # Quick & dirty workarround for lame people renaming their repo
-  if [[ $1 -eq "lame" ]]; then
-	ln -s "deprecated-lame-mirror-RELEASE__3_99_5" lame
-  fi
-
   # Change to right directory
   cmd cd $1 || die "Unable to change to directory $1"
 
