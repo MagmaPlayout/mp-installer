@@ -17,6 +17,8 @@ mlt_spacers_path=$CURDIR/media/spacers/
 devourer_input_dir=$CURDIR/media/input
 devourer_output_dir=$CURDIR/media/output
 devourer_thumb_dir=$CURDIR/gui/mp-ui-playout/src/assets/images/media-thumbnails/
+medias_fps=60
+devourer_ffmpeg_args= -f avi -c:v libx264 -qp 0
 " >> ~/.magma-playout.conf
 
 echo "Creating default directories..."

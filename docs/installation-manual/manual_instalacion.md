@@ -5,8 +5,8 @@
 Antes de comenzar la instalación de _Magma Playout_ se debe contar con 
 una computadora con las siguientes características mínimas:  
   * Procesador de 2 núcleos de 2.6 GHz
-  * 8 Gb de memoria RAM
-  * 500 Gb de almacenamiento
+  * 4 Gb de memoria RAM
+  * 50 Gb de almacenamiento (influye directamente en la cantidad de medios disponibles para reproducir)
   * Sistema operativo Debian 8  
   * Conexión a internet activa
 
@@ -14,13 +14,13 @@ una computadora con las siguientes características mínimas:
 ## Instalación
 
 El proceso de instalación de _Magma Playout_ se realiza en su totalidad desde
-una terminal y tarda aproximadamente 45 minutos en completar.  
-A continuación se describen los pasos para instalar el sistema bajando todo lo 
-necesario de internet o desde el archivo **MagmaPlayout.zip**.
+una terminal y tarda aproximadamente 45 minutos en completar, aunque depende de las velocidades del procesador y de la conexión a internet.  
+A continuación se describen los pasos para instalar el sistema.  
 
+### Instalar el comando _sudo_ 
 
-1. El primer paso es instalar el comando _sudo_, configurarlo y reiniciar la computadora.  
-Desde una terminal ejecutar los siguientes comandos:
+Abrir una terminal y ejecutar lo comandos descritos a continuación.  
+Tener en cuenta que tienen que ser modificados según el ambiente en el que se va a instalar.  
 
 ```bash
 su  
@@ -32,9 +32,9 @@ usermod -aG sudo <username>
 reboot
 ``` 
 
-### Instalación desde internet
+### Descargar el instalador de Magma Playout
 
-Abrir una terminal y ejecutar los siguientes comandos:  
+Abrir una terminal y ejecutar lo comandos descritos a continuación.  
 
 ```bash
 cd
@@ -44,15 +44,13 @@ cd mp-installer
 ./install.sh
 ```
 
-### Instalación desde MagmaPlayout.zip
+Durante la instalación se requiere la interacción del usuario para las siguientes acciones:
+1. Ingresar la contraseña del usuario.
+1. Seleccionar la instalación de java cuyo path sea "/usr/local/java/jdk1.8.0_151/java".  
+> ![java_alternatives](install_imgs/java_alternatives.png)
+3. Ingresar la contraseña de administración de mariadb-server cuando se presente la siguiente pantalla:  
+> 
 
-Copiar el archivo _MagmaPlayout.zip_ al directorio _~/_, abrir una terminal 
-y ejecutar los siguientes comandos:  
-
-```bash
-cd ~/mp-installer/
-./install.sh
-```
 
 ## Configuración
 
@@ -73,34 +71,34 @@ A continuación se describen las claves de cada archivo de configuración.
 # ------------------------------- #
 
 # Duración en minutos a mantener en la lista de melted
-melted_playlist_max_duration: 120 
+melted_playlist_max_duration=120 
 # Frecuencia de trabajo del thread que vigila el tiempo restante 
 # de la lista de melted
-melted_appender_worker_freq: 5
+melted_appender_worker_freq=5
 # Directorio a la instalación de melt
-melt_path: /usr/bin/melt/melt
+melt_path=/usr/bin/melt/melt
 # Directorio al media por defecto. Debe ser un directorio válido a una imágen.
-default_media_path: /usr/local/magma-playout/default.mlt
+default_media_path=/usr/local/magma-playout/default.mlt
 # Directorio temporal donde se van a poner los archivos .mlt 
 # "espaciadores" con el media por defecto
-mlt_spacers_path: /usr/local/magma-playout/spacers/
+mlt_spacers_path=/usr/local/magma-playout/spacers/
 
 # ------------------------------- #
 # mp-devourer config ------------ #
 # ------------------------------- #
 
 # FPS al cual se van a transcodear todos los medias cargados
-medias_fps: 60
+medias_fps=60
 # Directorio de entrada del cual cargar los medias al sistema
-devourer_input_dir: EDIT ME!
+devourer_input_dir= EDIT ME!
 # Directorio de salida donde se guardan los medias transcodeados
-devourer_output_dir: EDIT ME!
+devourer_output_dir= EDIT ME!
 # Directorio de thumbnails del frontend
-devourer_thumb_dir: EDIT ME!
+devourer_thumb_dir= EDIT ME!
 # Directorio de la instalación del MLT Framework
-mlt_framework_dir: EDIT ME!
+mlt_framework_dir= EDIT ME!
 # Argumentos de transcodificación
-devourer_ffmpeg_args: -f avi -c:v libx264 -qp 0
+devourer_ffmpeg_args= -f avi -c:v libx264 -qp 0
 ```
 
 Existen más claves configurables que permiten generar una instalación distribuida en más de una PC. El modo
