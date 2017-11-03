@@ -2,33 +2,27 @@
 
 echo "Generating mp-core config file..."
 
-echo "redis_server_hostname=localhost
-redis_server_port=6379
+$CURDIR=$(pwd)
+echo "#Magma Playout Configuration File
 redis_reconnection_timeout=1000
 bash_timeout_ms=10000
-redis_fscp_channel=FSCP
-redis_pccp_channel=PCCP
-melted_server_hostname=localhost
-filter_server_hostname=localhost\:3001/filter-banner.html
-melted_reconnection_timeout=1000
-melt_path=
+melted_reconnection_timeout=1000	# In milliseconds
 melted_reconnection_tries=0
-melted_server_port=5250
-melted_playlist_max_duration=120
-mlt_spacers_path=
-melted_appender_worker_freq=1
-default_media_path=" >> ~/.magma-playout.conf
+melted_playlist_max_duration=120 	# In minutes
+melted_appender_worker_freq=10 		# In minutes
+mlt_framework_dir=$CURDIR/core/melted/installation/bin/
+melt_path=$CURDIR/core/melted/installation/bin/melt
+default_media_path=$CURDIR/../dependencies/default.png
+mlt_spacers_path=$CURDIR/media/spacers/
+devourer_input_dir=$CURDIR/media/input
+devourer_output_dir=$CURDIR/media/output
+devourer_thumb_dir=$CURDIR/gui/mp-ui-playout/src/assets/images/media-thumbnails/
+" >> ~/.magma-playout.conf
 
-
-echo "Generating ingest server config file..."
-
-echo "ffmpeg_path=
-media_directory=
-ffprobe_path=
-redis_port=6379
-redis_host=localhost
-thumbnail_dir=" >> ~/.magma-playout/ingestserver.properties
-
+echo "Creating default directories..."
+mkdir -p $CURDIR/media/input
+mkdir -p $CURDIR/media/output
+mkdir -p $CURDIR/media/spacers/
 
 echo "Generating mp-admin-api config file..."
 
@@ -72,9 +66,8 @@ echo "module.exports = {
 
 echo "
 
-You need to configure the modules manually by writing on the following files:
+The following files have default configuration, you should check them out to see if everything is OK:
 	~/.magma-playout.conf
-	~/.magma-playout/ingestserver.properties
 	$(pwd)/store/mp-admin-api/config.js
 	$(pwd)/store/mp-playout-api/config.js
 	
