@@ -1,5 +1,7 @@
 # Manual de Instalación
 
+Este documento detalla los pasos necesarios para poder instalar el sistema _Magma Playout_.
+
 ## Requerimientos 
 
 Antes de comenzar la instalación de _Magma Playout_ se debe contar con 
@@ -46,12 +48,28 @@ cd mp-installer
 
 Durante la instalación se requiere la interacción del usuario para las siguientes acciones:
 1. Ingresar la contraseña del usuario.
-1. Ingresar la contraseña de administración de mariadb-server cuando se presente la siguiente pantalla:  
-> ![mariadb-server password](install_imgs/mariadb_password.png)
+1. Ingresar una contraseña para el servidor base de datos mariadb-server cuando se presente la siguiente pantalla:  
+> ![mariadb-server password](install_imgs/mariadb_password.png)  
+NOTA: Dependiendo de la versión que tengan los repositorios de Debian, esta pantalla puede no aparecer. De no aparecer referirse a la sección _Configuración de la Base de Datos_.
+
 3. Seleccionar la instalación de java cuyo path sea "/usr/local/java/jdk1.8.0_151/java".  
 > ![java_alternatives](install_imgs/java_alternatives.png)
-4. Ingresar la contraseña de la base de datos al momento de generar los esquemas:
+4. Ingresar la contraseña de la base de datos al momento de generar los esquemas (la misma que se definió en el paso 2):
 > ![scripts_sql](install_imgs/sql_pass.png)
+
+
+## Configuración de la Base de Datos
+
+Se deben ejecutar los siguientes comandos desde una terminal si durante la instalación del sistema no se pidió al usuario la configuración de la contraseña de _root_ para _MariaDB_ :  
+```bash
+sudo mysql -u root 
+use mysql;
+update user set plugin='' where User='root';
+flush privileges;
+quit;
+mysql_secure_installation # Seguir los pasos propuestos por este wizard
+```  
+Una vez terminada la configuración se puede volver a ejecutar el script ```mp-installer/database/01-createDbs.sh```
 
 
 ## Configuración
@@ -102,16 +120,31 @@ mlt_framework_dir=/<installation>/core/melted/installation/bin/
 devourer_ffmpeg_args= -f avi -c:v libx264 -qp 0
 ```
 
+### Configuración de la salida audiovisual
+
+El archivo _mp-installer/magma-playout/core/melted/installation/etc/melted.conf_ tiene la configuración de la instancia de _melted_ que usa _Magma Playout_.  
+
+Como salida por defecto tiene configurada la ventana de previsualización:  
+> uadd sdl
+
+Para configurar la salida a una placa **blackmagic** se debe reemplazar la línea ```uadd sdl``` por ```uadd decklink:0``` donde el _:0_ indica el número de la placa.
+
 ## Ejecución
 
 Para probar la instalación realizar los siguientes pasos:
 1. ejecutar el script ```mp-installer/run.sh```  
 Se deberá ver una ventana con el preview de la reproducción mostrando la imágen de Maga Playout.  
 
-> ![sdl_preview.png](IMG)
+> ![sdl_preview](install_imgs/sdl_preview.png)
 
-2. Abrir el navegador Google Chrome y acceder a la URL _https://<servidor>:4200/_ donde _"<servidor>"_ es la IP o dominio del servidor sobre el cual se ejecutó la instalación de _Magma Playout_  
-Se deberá ver la pantalla de login de la aplicación.
+2. Abrir el navegador Google Chrome y acceder a la URL _https://-servidor-:4200/_ donde _"-servidor-"_ es la IP o dominio del servidor sobre el cual se ejecutó la instalación de _Magma Playout_  
+Se deberá ver la pantalla de login de la aplicación.  
 
-> ![magma_login.png](IMG)
+> ![magma_login](install_imgs/magma_login.png)
+
+3. Para acceder al sistema se deben usar las credenciales cargadas por defecto: usuario admin, password admin.  
+Se deberá ver la pantalla principal del sistema sin medias cargados.
+
+> ![magma_main](install_imgs/magma_main.png)
+
 
