@@ -10,4 +10,4 @@ cd node-6.11.2
  sudo make install
 
 echo "Installing Angular..."
-npm install -g @angular/cli
+sudo npm install -g @angular/cli
