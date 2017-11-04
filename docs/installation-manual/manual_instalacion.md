@@ -49,13 +49,21 @@ cd mp-installer
 Durante la instalación se requiere la interacción del usuario para las siguientes acciones:
 1. Ingresar la contraseña del usuario.
 1. Ingresar una contraseña para el servidor base de datos mariadb-server cuando se presente la siguiente pantalla:  
-> ![mariadb-server password](install_imgs/mariadb_password.png)  
+<p align="left">
+	<img src="install_imgs/mariadb_password.png"/>
+</p>  
+
 NOTA: Dependiendo de la versión que tengan los repositorios de Debian, esta pantalla puede no aparecer. De no aparecer referirse a la sección _Configuración de la Base de Datos_.
 
-3. Seleccionar la instalación de java cuyo path sea "/usr/local/java/jdk1.8.0_151/java".  
-> ![java_alternatives](install_imgs/java_alternatives.png)
+3. Seleccionar la instalación de java cuyo path sea "/usr/local/java/jdk1.8.0_151/java".
+<p align="left">
+	<img src="install_imgs/java_alternatives.png"/>
+</p>
+
 4. Ingresar la contraseña de la base de datos al momento de generar los esquemas (la misma que se definió en el paso 2):
-> ![scripts_sql](install_imgs/sql_pass.png)
+<p align="left">
+	<img src="install_imgs/sql_pass.png"/>
+</p>
 
 
 ## Configuración de la Base de Datos
@@ -135,16 +143,25 @@ Para probar la instalación realizar los siguientes pasos:
 1. ejecutar el script ```mp-installer/run.sh```  
 Se deberá ver una ventana con el preview de la reproducción mostrando la imágen de Maga Playout.  
 
-> ![sdl_preview](install_imgs/sdl_preview.png)
+
+<p align="center">
+	<img src="install_imgs/sdl_preview.png"/>
+</p>
+
 
 2. Abrir el navegador Google Chrome y acceder a la URL _https://-servidor-:4200/_ donde _"-servidor-"_ es la IP o dominio del servidor sobre el cual se ejecutó la instalación de _Magma Playout_  
 Se deberá ver la pantalla de login de la aplicación.  
 
-> ![magma_login](install_imgs/magma_login.png)
+<p align="center">
+	<img src="install_imgs/magma_login.png"/>
+</p>	
+
 
 3. Para acceder al sistema se deben usar las credenciales cargadas por defecto: usuario admin, password admin.  
 Se deberá ver la pantalla principal del sistema sin medias cargados.
 
-> ![magma_main](install_imgs/magma_main.png)
+<p align="center">
+	<img src="install_imgs/magma_main.png"/>
+</p>
 
 
