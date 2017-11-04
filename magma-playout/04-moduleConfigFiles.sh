@@ -2,7 +2,7 @@
 
 echo "Generating mp-core config file..."
 
-$CURDIR=$(pwd)
+CURDIR=$(pwd)
 echo "#Magma Playout Configuration File
 redis_reconnection_timeout=1000
 bash_timeout_ms=10000
