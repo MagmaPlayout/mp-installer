@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Relative paths (no need to modify)
 BASE_PATH="$(pwd)/magma-playout/"
@@ -12,7 +12,7 @@ PLAYOUT_UI=$BASE_PATH"gui/mp-ui-playout/"
 REDIS_PATH=$BASE_PATH"/core/redis/src"
 
 # Commands
-MELTED_SERVER="/bin/bash -c './start-melted-server; exec /bin/bash -i'" # Keeps terminal open
+MELTED_SERVER="./start-melted-server"
 MELTED_STATUS="java -jar mp-melted-status.jar"
 REDIS_SERVER="./redis-server"
 REDIS_CLIENT="./redis-cli"
@@ -20,31 +20,7 @@ NODE_SERVER="node server.js"
 ANGULAR_SERVER="ng serve"
 JAVA_CORE="java -jar mp-core.jar"
 
-
-if [[ $1 == "core" ]]; then
-	figlet "MP - Core Developer"
-
-	# Runs only core related stuff. For developing.
-	gnome-terminal --maximize \
-			--tab --working-directory="$REDIS_PATH" -e "$REDIS_SERVER" --title="redis server" \
-			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
-			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
-			--tab --working-directory="$ADMIN_API" -e "$NODE_SERVER" --title="admin api" \
-			--tab --working-directory="$PLAYOUT_API" -e "$NODE_SERVER" --title="playout api" \
-			--tab --working-directory="$PLAYOUT_UI" -e "$ANGULAR_SERVER" --title="frontend" \
-			&>/dev/null
-
-			&>/dev/null
-elif [[ $1 == "coreSmall" ]]; then
-	figlet "MP - Core Developer"
-	
-	# Runs everything but core java module. For developing.
-	gnome-terminal --maximize \
-			--tab --working-directory="$REDIS_PATH" -e "$REDIS_SERVER" --title="redis server" \
-			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
-			--tab --working-directory="$PLAYOUT_API" -e "$NODE_SERVER" --title="playout api" \
-			&>/dev/null
-elif [[ $1 == "gui" ]]; then
+if [[ $1 == "gui" ]]; then
 	figlet "MP - GUI Developer"
 
 	# Runs only gui related stuff. For developing.
@@ -55,24 +31,20 @@ elif [[ $1 == "gui" ]]; then
 			--tab --working-directory="$PLAYOUT_API" -e "$NODE_SERVER" --title="playout api" \
 			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
 			&>/dev/null
-else	
+else
 	figlet "Magma Playout"
-	
-	# Runs gnome-terminal with each app on a separate tab
-	gnome-terminal --maximize \
-			--tab --working-directory="$REDIS_PATH" -e "$REDIS_SERVER" --title="redis server" \
-			--tab --working-directory="$MELTED_PATH" -e "$MELTED_SERVER" --title="melted" \
-			--tab --working-directory="$MELTED_STATUS_PATH" -e "$MELTED_STATUS" --title="MSTA" \
-			--tab --working-directory="$CORE_API" -e "$NODE_SERVER" --title="core api" \
-			--tab --working-directory="$ADMIN_API" -e "$NODE_SERVER" --title="admin api" \
-			--tab --working-directory="$PLAYOUT_API" -e "$NODE_SERVER" --title="playout api" \
-			--tab --working-directory="$CORE" -e "$JAVA_CORE" --title="core" \
-			--tab --working-directory="$PLAYOUT_UI" -e "$ANGULAR_SERVER" --title="frontend" \
-			&>/dev/null
-fi			
-			
-
-
-
-
+	echo "Creating tmux session..."
+	tmux -f dependencies/sources/tmux.conf new -s magma -d 
+	tmux new-window -n redis  -t magma -c $REDIS_PATH $REDIS_SERVER
+	tmux new-window -n melted -t magma -c $MELTED_PATH $MELTED_SERVER 
+	tmux new-window -n status -t magma -c $MELTED_STATUS_PATH $MELTED_STATUS
+	tmux new-window -n coreapi  -t magma -c $CORE_API $NODE_SERVER
+	tmux new-window -n adminapi -t magma -c $ADMIN_API $NODE_SERVER
+	tmux new-window -n playoutapi -t magma -c $PLAYOUT_API $NODE_SERVER
+	tmux new-window -n core -t magma -c $CORE $JAVA_CORE
+	tmux new-window -n gui  -t magma -c $PLAYOUT_UI $ANGULAR_SERVER
+	echo "Done! now run: "
+	echo "    tmux attach-session -t magma"
+	echo " use (Ctrl+B)(r) shortcut to respawn a killed command"
+fi
 
