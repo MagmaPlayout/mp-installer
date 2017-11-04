@@ -50,7 +50,8 @@ Durante la instalación se requiere la interacción del usuario para las siguien
 > ![mariadb-server password](install_imgs/mariadb_password.png)
 3. Seleccionar la instalación de java cuyo path sea "/usr/local/java/jdk1.8.0_151/java".  
 > ![java_alternatives](install_imgs/java_alternatives.png)
-
+4. Ingresar la contraseña de la base de datos al momento de generar los esquemas:
+> ![scripts_sql](install_imgs/sql_pass.png)
 
 
 ## Configuración
