@@ -7,7 +7,7 @@ una computadora con las siguientes características mínimas:
   * Procesador de 2 núcleos de 2.6 GHz
   * 4 Gb de memoria RAM
   * 50 Gb de almacenamiento (influye directamente en la cantidad de medios disponibles para reproducir)
-  * Sistema operativo Debian 8  
+  * Sistema operativo Debian 9  
   * Conexión a internet activa
 
 
@@ -102,4 +102,16 @@ mlt_framework_dir=/<installation>/core/melted/installation/bin/
 devourer_ffmpeg_args= -f avi -c:v libx264 -qp 0
 ```
 
+## Ejecución
+
+Para probar la instalación realizar los siguientes pasos:
+1. ejecutar el script ```mp-installer/run.sh```  
+Se deberá ver una ventana con el preview de la reproducción mostrando la imágen de Maga Playout.  
+
+> ![sdl_preview.png](IMG)
+
+2. Abrir el navegador Google Chrome y acceder a la URL _https://<servidor>:4200/_ donde _"<servidor>"_ es la IP o dominio del servidor sobre el cual se ejecutó la instalación de _Magma Playout_  
+Se deberá ver la pantalla de login de la aplicación.
+
+> ![magma_login.png](IMG)
 
