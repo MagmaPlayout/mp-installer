@@ -2,7 +2,7 @@
 
 function updateDir {
 	git -C $1 pull
-	git -C $1 checkout devel
+	git -C $1 checkout master
 }
 
 
