@@ -21,6 +21,8 @@ El proceso de instalación de _Magma Playout_ se realiza en su totalidad desde
 una terminal y tarda aproximadamente 45 minutos en completar, aunque depende de las velocidades del procesador y de la conexión a internet.  
 A continuación se describen los pasos para instalar el sistema.  
 
+<div style="page-break-after: always;"></div>
+
 ### Instalar el comando _sudo_ 
 
 Abrir una terminal y ejecutar lo comandos descritos a continuación.  
@@ -66,6 +68,8 @@ NOTA: Dependiendo de la versión que tengan los repositorios de Debian, esta pan
 <p align="left">
 	<img src="install_imgs/sql_pass.png"/>
 </p>
+
+<div style="page-break-after: always;"></div>
 
 
 ## Configuración de la Base de Datos
@@ -123,7 +127,7 @@ devourer_input_dir=/installation/media/input
 # Directorio de salida donde se guardan los medias transcodeados
 devourer_output_dir=/<installation>/media/output
 # Directorio de thumbnails del frontend
-devourer_thumb_dir=/<installation>/gui/mp-ui-playout/src/assets/images/media-thumbnails/
+devourer_thumb_dir=/<installation>/gui/mp-ui-playout/src/assets/img/media-thumbnails/
 # Directorio de la instalación del MLT Framework
 mlt_framework_dir=/<installation>/core/melted/installation/bin/
 # Argumentos de transcodificación
