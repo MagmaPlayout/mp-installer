@@ -1,4 +1,6 @@
-# Manual de Instalación
+<h1 align="center"><p>Magma Playout</p>
+<p>Manual de Instalación</p>
+</h1>
 
 Este documento detalla los pasos necesarios para poder instalar el sistema _Magma Playout_.
 
