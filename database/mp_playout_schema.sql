@@ -208,7 +208,9 @@ CREATE TABLE `TagPieces` (
   `pieceId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_TagPieces_1_idx` (`tagId`),
-  CONSTRAINT `fk_TagPieces_1` FOREIGN KEY (`tagId`) REFERENCES `Tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_piece_idx` (`pieceId`),
+  CONSTRAINT `fk_TagPieces_1` FOREIGN KEY (`tagId`) REFERENCES `Tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_piece` FOREIGN KEY (`pieceId`) REFERENCES `Piece` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -225,7 +227,9 @@ CREATE TABLE `TagPlaylists` (
   `playlistId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_TagPlaylists_1_idx` (`tagId`),
-  CONSTRAINT `fk_TagPlaylists_1` FOREIGN KEY (`tagId`) REFERENCES `Tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_playlist_idx` (`playlistId`),
+  CONSTRAINT `fk_TagPlaylists_1` FOREIGN KEY (`tagId`) REFERENCES `Tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_playlist` FOREIGN KEY (`playlistId`) REFERENCES `Playlist` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -271,4 +275,4 @@ CREATE TABLE `Thumbnail` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-23 14:28:36
+-- Dump completed on 2017-11-12 21:45:53

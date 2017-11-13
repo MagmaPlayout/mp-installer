@@ -138,9 +138,12 @@ CREATE TABLE `User` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
+  `idRole` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  KEY `fk_User_Role_idx` (`idRole`),
+  CONSTRAINT `fk_User_Role` FOREIGN KEY (`idRole`) REFERENCES `Role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,4 +172,4 @@ CREATE TABLE `UserActions` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-14 11:54:17
+-- Dump completed on 2017-11-12 21:45:39
