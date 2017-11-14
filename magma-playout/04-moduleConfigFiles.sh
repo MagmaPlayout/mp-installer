@@ -6,10 +6,17 @@ CURDIR=$(pwd)
 echo "#Magma Playout Configuration File
 redis_reconnection_timeout=1000
 bash_timeout_ms=10000
-melted_reconnection_timeout=1000	# In milliseconds
 melted_reconnection_tries=0
-melted_playlist_max_duration=120 	# In minutes
-melted_appender_worker_freq=10 		# In minutes
+
+# In milliseconds
+melted_reconnection_timeout=1000
+
+# In minutes
+melted_playlist_max_duration=120
+
+# In minutes
+melted_appender_worker_freq=10
+
 mlt_framework_dir=$CURDIR/core/melted/installation/bin/
 melt_path=$CURDIR/core/melted/installation/bin/melt
 default_media_path=$CURDIR/../dependencies/default.png
@@ -27,6 +34,7 @@ mkdir -p $CURDIR/media/output
 mkdir -p $CURDIR/media/spacers/
 
 echo "Generating mp-admin-api config file..."
+read -p "Enter MariaDB Password: " dbpass
 
 echo "module.exports = {
 	'secret': 'aguantemagmaplayout_\$123%4567Bd89AA654sdf-.,',
@@ -36,7 +44,7 @@ echo "module.exports = {
 		'name' : 'mp_admin',
 		'host' : '127.0.0.1',
 		'user' : 'root',
-		'password' : 'password'
+		'password' : '$dbpass'
 	}
 };" >> store/mp-admin-api/config.js
 
@@ -61,7 +69,7 @@ echo "module.exports = {
 		'name' : 'mp_playout',
 		'host' : '127.0.0.1',
 		'user' : 'root',
-		'password' : 'password'
+		'password' : '$dbpass'
 	}
 };" >> store/mp-playout-api/config.js
 
