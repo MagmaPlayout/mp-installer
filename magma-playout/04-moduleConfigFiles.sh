@@ -26,12 +26,13 @@ devourer_output_dir=$CURDIR/media/output
 devourer_thumb_dir=$CURDIR/gui/mp-ui-playout/src/assets/img/media-thumbnails/
 medias_fps=60
 devourer_ffmpeg_args= -f avi -c:v libx264 -qp 0
-" >> ~/.magma-playout.conf
+" > ~/.magma-playout.conf
 
 echo "Creating default directories..."
 mkdir -p $CURDIR/media/input
 mkdir -p $CURDIR/media/output
 mkdir -p $CURDIR/media/spacers/
+mkdir -p $CURDIR/gui/mp-ui-playout/src/assets/img/media-thumbnails/
 
 echo "Generating mp-admin-api config file..."
 read -p "Enter MariaDB Password: " dbpass
@@ -46,7 +47,7 @@ echo "module.exports = {
 		'user' : 'root',
 		'password' : '$dbpass'
 	}
-};" >> store/mp-admin-api/config.js
+};" > store/mp-admin-api/config.js
 
 
 echo "Generating mp-playout-api config file..."
@@ -71,7 +72,7 @@ echo "module.exports = {
 		'user' : 'root',
 		'password' : '$dbpass'
 	}
-};" >> store/mp-playout-api/config.js
+};" > store/mp-playout-api/config.js
 
 
 echo "
