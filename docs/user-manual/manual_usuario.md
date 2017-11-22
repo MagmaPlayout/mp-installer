@@ -59,14 +59,14 @@ Para crear un usuario se deben seguir los siguientes pasos, desde la pantalla _"
     - Media: Este rol permite acceder únicamente a la pantalla _"Medias"_ donde se pueden administrar los medias con filtros y los metadatos de los medias cargados en el sistema.
 1. Completar los campos _Username_ y _Password_ que determinan las credenciales de acceso al sistema.
 
-## Baja de usuario
+### Baja de usuario
 
 Para dar de baja un usuario se deben seguir los siguientes pasos, desde la pantalla _"Admin"_:
 
 1. Identificar el usuario que se desea dar de baja en la grilla de usuarios.
 1. Hacer click en el botón de eliminar ubicado a la derecha de la fila del usuario.
 
-## Modificación de rol
+### Modificación de rol
 
 Para cambiar el rol de un usuario se deben seguir los siguientes pasos, desde la pantalla _"Admin"_:
 
@@ -79,28 +79,64 @@ Para cambiar el rol de un usuario se deben seguir los siguientes pasos, desde la
 Para cargar medias en el sistema se debe utilizar la herramienta **mp-devourer** desde una terminal conectada al servidor donde se ejecuta _Melted_.
 
 1. Copiar los medias a utilizar al directorio _"inputDir_" definido en el archivo de configuración _"~/.magma-playout.conf"_ del usuario con el que se ejecuta el sistema.
-1. Ejecutar el comando _./mp-devourer.sh_ ubicado en el directorio raíz de la instalación del sistema.
-1. Desde la interfaz web, abrir la pesta
-
+1. Ejecutar el comando _./mp-devourer.sh_ ubicado en el directorio raíz de la instalación del sistema y esperar a que termine.
+1. Los medias cargados estarán visibles en las pantallas _"Medias"_, _"Scheduller"_ y _"Live mode"_.
 
 ### Creación de filtros
 
+Para aplicar un filtro a un media se deben seguir los siguientes pasos desde la pantalla _"Medias"_:
+
+1. Seleccionar desde la grilla el media al aplicar el filtro.
+1. Hacer click sobre el botón de _"New"_ identificado por el signo _"+"_.
+1. Seleccionar el filtro deseado en el combo _"Filter"_.
+1. Completar el campo _"Name"_ con el nombre que va a identificar al nuevo _media_ con filtro.
+1. Hacer click sobre el botón _"Save"_.
 
 ### Edición de datos
 
+Para editar los datos de un media se deben seguir los siguientes pasos deste la pantalla _"Medias"_:
+
+1. Seleccionar desde la grilla el media a modificar.
+1. Hacer click sobre el botón de _"Edit"_.
+1. Realizar las modificaciones sobre _"Name"_, _"Filter"_ o _"Tags"_ según sea necesario.
+1. Hacer click sobre el botón _"Save"_.
+
 ## Modo _"En Vivo"_
+
+El modo "en vivo" permite reemplazar la lista de reproducción programada en el modo _"Scheduler"_ por una nueva lista.  
+
+La pantalla está dividida en dos columnas: "Medias" y "Playout list".  
+Al arrastrar medias desde la columna "Medias" a la columna "Playout list" se agregan a la lista de reproducción del modo en vivo.
+
+Para aplicar la lista de reproducción configurada se debe hacer click en el botón de cambio de modo a _"Live Mode"_.
+
 
 ## Modo _"Programador"_
 
+El modo "Programador" permite especificar una fecha y hora en la cual reproducir un media determinado.
+
+La pantalla se divide en dos columnas "Medias" y la vista de calendario.  
+La forma de programar un media en una determinada fecha hora es mediante "click" y arrastrar medias desde la columna "Medias" al calendario, en la fecha y hora deseados.
+
+Los cambios realizados sobre el calendario solo se harán efectivos al hacer click sobre el botón _"Save"_.
+
+Para cambiar de modo "Live" a modo "Scheduler" se debe utilizar el botón "Switch to programmer mode".
+
+
+
 ## Previsualización de medias
 
-Para previsualizar medias se debe estar en la pantalla de _Modo en vivo_ o _Modo programador_ y posicionar el puntero del mouse sobre el media que se desea previsualizar.  
-La imagen que identifica al media empezará a cambiar mostrando distintas imágenes correspondientes al media.  
+Para previsualizar medias se debe estar en la pantalla de _Modo en vivo_ o _Modo programador_ y posicionar el puntero del mouse sobre el media que se desea previsualizar.
+
+La imagen que identifica al media empezará a cambiar mostrando distintas imágenes correspondientes al media.
+
 Estas imágenes se generan al importar los medias en el sistema utilizando el _mp-devourer_.
 
 ## Reportes
 
+La pantalla _"Reports"_ permite buscar en el registro de reproducción por un media en particular en un rango de fechas determinado.
+
 ### Exportación a CSV
 
-Para exportar un reporte a _csv_ se debe hacer click sobre el botón _"Export"_.   
+Para exportar un reporte a _csv_ se debe hacer click sobre el botón _"Export"_.  
 El navegador comenzará a bajar un archivo de tipo _.csv_ con los contenidos del reporte generado desde el sistema.
