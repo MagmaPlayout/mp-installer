@@ -18,33 +18,48 @@ Para acceder a las terminales específicas de cada proceso, se debe ejecutar el 
 
 ## Inicio de sesión
 
-​Al acceder a la URL del sistema (por defecto _http://localhost:4200_) se pide un usuario y contraseña.
+​Al acceder a la URL del sistema (por defecto _http://localhost:4200_) se pide un usuario y contraseña.  
+<p align="left">
+	<img src="imgs/login.png"/>
+</p>  
 Si el sistema está recién instalado se puede acceder con el usuario ​_admin_ y contraseñ​a _admin_​ .  
 ​Referirse a la sección _Administración de usuarios_ para cambiar la contraseña inicial.​
 
 Una vez autenticado en el sistema se puede ver la pantalla principal:  
-**TODO: IMG**
+<p align="left">
+	<img src="imgs/main.png"/>
+</p> 
 
 ### Panel de menú
 
 Desde el panel de menú se puede navegar a las distintas pantallas del sistema.  
-**TODO: IMG**
+<p align="left">
+	<img src="imgs/menu_panel.png"/>
+</p> 
 
 ### Sección principal
 
 La sección principal muestra las operaciones que se pueden realizar en la pantalla actual.
 
-**TODO: IMG**
+<p align="left">
+	<img src="imgs/main_section.png"/>
+</p> 
 
 ### Barra superior
 
 La barra superior permite cerrar la sesión autenticada para el usuario actual.
 
-**TODO: IMG**
+<p align="left">
+	<img src="imgs/logout.png"/>
+</p> 
 
 ## Administración de usuarios
 
 La administración de usuarios está ubicada en la pantalla _"Admin"_ accesible mediante el _"Panel de menú"_
+
+<p align="left">
+	<img src="imgs/admin_user.png"/>
+</p> 
 
 ### Creación de usuario
 
@@ -66,6 +81,10 @@ Para dar de baja un usuario se deben seguir los siguientes pasos, desde la panta
 1. Identificar el usuario que se desea dar de baja en la grilla de usuarios.
 1. Hacer click en el botón de eliminar ubicado a la derecha de la fila del usuario.
 
+<p align="left">
+	<img src="imgs/remove_user.png"/>
+</p> 
+
 ### Modificación de rol
 
 Para cambiar el rol de un usuario se deben seguir los siguientes pasos, desde la pantalla _"Admin"_:
@@ -73,6 +92,10 @@ Para cambiar el rol de un usuario se deben seguir los siguientes pasos, desde la
 1. Identificar el usuario que se desea modificar en la grilla de usuarios.
 1. Hacer click en el selector de la columna _Role_ correspondiente al usuario a modificar.
 1. Seleccionar el nuevo rol para el usuario.
+
+<p align="left">
+	<img src="imgs/user_role.png"/>
+</p> 
 
 ## Administración de medias
 
@@ -92,6 +115,10 @@ Para aplicar un filtro a un media se deben seguir los siguientes pasos desde la 
 1. Completar el campo _"Name"_ con el nombre que va a identificar al nuevo _media_ con filtro.
 1. Hacer click sobre el botón _"Save"_.
 
+<p align="left">
+	<img src="imgs/new_filter.png"/>
+</p> 
+
 ### Edición de datos
 
 Para editar los datos de un media se deben seguir los siguientes pasos deste la pantalla _"Medias"_:
@@ -110,6 +137,9 @@ Al arrastrar medias desde la columna "Medias" a la columna "Playout list" se agr
 
 Para aplicar la lista de reproducción configurada se debe hacer click en el botón de cambio de modo a _"Live Mode"_.
 
+<p align="left">
+	<img src="imgs/livemode.png"/>
+</p> 
 
 ## Modo _"Programador"_
 
@@ -122,7 +152,9 @@ Los cambios realizados sobre el calendario solo se harán efectivos al hacer cli
 
 Para cambiar de modo "Live" a modo "Scheduler" se debe utilizar el botón "Switch to programmer mode".
 
-
+<p align="left">
+	<img src="imgs/schedulermode.png"/>
+</p> 
 
 ## Previsualización de medias
 
@@ -135,6 +167,10 @@ Estas imágenes se generan al importar los medias en el sistema utilizando el _m
 ## Reportes
 
 La pantalla _"Reports"_ permite buscar en el registro de reproducción por un media en particular en un rango de fechas determinado.
+
+<p align="left">
+	<img src="imgs/reports.png"/>
+</p> 
 
 ### Exportación a CSV
 
