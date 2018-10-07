@@ -22,6 +22,3 @@ cd $JDIR
  echo "export JAVA_HOME=$DIR/$JDIR" >> ~/.bash_profile
  echo "export JRE_HOME=$DIR/$JDIR/jre" >> ~/.bash_profile
  echo "export PATH=$PATH:$DIR/$JDIR/bin:$DIR/$JDIR/jre/bin" >> ~/.bash_profile
-
-
-~     
